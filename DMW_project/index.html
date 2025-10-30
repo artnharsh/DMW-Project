@@ -518,11 +518,11 @@
         .stat-card {
             background: white;
             border-radius: 20px;
-            padding: 28px;
+            padding: 28px 36px 28px 28px; /* give extra right padding so values don't get visually cropped */
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s;
             position: relative;
-            overflow: hidden;
+            overflow: visible; /* allow subtle icon shadows to show without clipping */
         }
 
         .stat-card::before {
@@ -568,6 +568,27 @@
             justify-content: center;
             font-size: 24px;
             color: white;
+            flex-shrink: 0;
+            box-shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
+            background: var(--gradient-1); /* sensible fallback if nth-child color not applied */
+            margin-left: 12px; /* separate the icon from the edge */
+            position: relative;
+            right: 0;
+        }
+
+        /* ensure icons and any images inside stat-icon are visible and appropriately sized */
+        .stat-icon i {
+            font-size: 20px;
+            color: white;
+            line-height: 1;
+        }
+
+        .stat-icon img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            display: block;
+            filter: brightness(1.05) contrast(1.05);
         }
 
         .stat-card:nth-child(1) .stat-icon {

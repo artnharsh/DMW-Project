@@ -1852,86 +1852,51 @@
                 return;
             }
 
-            const rawInput = document.getElementById('customerId').value.trim();
+            const customerId = document.getElementById('customerId').value.trim();
 
-            if (!rawInput) {
+            if (!customerId) {
                 showAlert('Please enter a customer ID', 'error');
                 return;
             }
 
             showLoading('analyticsLoading', true);
 
-            // Build a small set of candidate ID variants to tolerate formatting differences
-            const variants = [];
-            const add = v => { if (v != null) { const s = String(v).trim(); if (s && !variants.includes(s)) variants.push(s); } };
-            add(rawInput);
-            // If input looks like a float (ends with .0), try the integer part
-            if (rawInput.includes('.')) add(rawInput.split('.')[0]);
-            // Try integer form
-            const maybeInt = parseInt(rawInput, 10);
-            if (!isNaN(maybeInt)) add(String(maybeInt));
-            // Try a .0 suffix (in case backend kept raw floats)
-            if (!rawInput.endsWith('.0')) add(rawInput + '.0');
-
-            const resultsDiv = document.getElementById('customerProfileResults');
-            resultsDiv.innerHTML = `<div class="empty-state"><i class="fas fa-spinner fa-pulse"></i><h3>Searching for customer...</h3><p style="color:#9ca3af">Trying variants: ${variants.join(', ')}</p></div>`;
-
-            let lastError = null;
-
             try {
-                for (const variant of variants) {
-                    try {
-                        console.log('Trying customer ID variant:', variant);
-                        const response = await fetch(`${API_URL}/api/customers/${encodeURIComponent(variant)}`, {
-                            headers: { 'ngrok-skip-browser-warning': 'true' }
-                        });
+                const response = await fetch(`${API_URL}/api/customers/${customerId}`, {
+                    headers: { 'ngrok-skip-browser-warning': 'true' }
+                });
 
-                        const raw = await response.text();
-                        let body = null;
-                        try { body = JSON.parse(raw); } catch (_) { body = null; }
+                // Read raw response text so we can show useful diagnostic info even when server
+                // returns an HTML error page (which would break JSON.parse)
+                const raw = await response.text();
 
-                        if (response.status === 404) {
-                            console.warn('Customer lookup 404 for variant', variant, { url: `${API_URL}/api/customers/${variant}`, body: raw });
-                            lastError = { variant, status: 404, body: body || raw };
-                            // try next variant
-                            continue;
-                        }
+                // Try to parse JSON if possible
+                let body = null;
+                try { body = JSON.parse(raw); } catch (_) { body = null; }
 
-                        if (!response.ok) {
-                            const serverMsg = (body && (body.error || body.message)) || raw || response.statusText;
-                            throw new Error(serverMsg);
-                        }
-
-                        const data = body || JSON.parse(raw);
-                        // Successful response — display and return
-                        displayCustomerProfile(data);
-                        return;
-
-                    } catch (innerErr) {
-                        // If innerErr is not a 404 handled above, record and break
-                        console.error('Error while trying variant', variant, innerErr);
-                        lastError = { variant, error: innerErr };
-                        // If it's a network or server error (not 404), stop trying further variants
-                        if (!innerErr.message || innerErr.message.toLowerCase().includes('network') || innerErr.message.toLowerCase().includes('failed')) {
-                            break;
-                        }
-                        // otherwise continue to next variant
-                    }
+                // If 404, show a clear message and include server body (if any)
+                if (response.status === 404) {
+                    const serverMsg = (body && (body.error || body.message)) || raw || response.statusText;
+                    showAlert(`No customer found for ID ${customerId}: ${serverMsg}`, 'error');
+                    console.warn('Customer lookup 404', { url: `${API_URL}/api/customers/${customerId}`, status: response.status, body: raw });
+                    // Also write a helpful message into the results area
+                    const resultsDiv = document.getElementById('customerProfileResults');
+                    resultsDiv.innerHTML = `<div class="empty-state"><i class="fas fa-user-slash"></i><h3>Customer not found</h3><p>${serverMsg}</p><p style="margin-top:12px;color:#9ca3af;font-size:13px">Request URL: ${API_URL}/api/customers/${customerId}</p></div>`;
+                    return;
                 }
 
-                // All variants exhausted — show helpful diagnostic to the user
-                if (lastError) {
-                    const msg = lastError.body?.error || lastError.body?.message || lastError.body || (lastError.error && lastError.error.message) || 'Customer not found';
-                    showAlert(`Customer not found: ${msg}`, 'error');
-                    resultsDiv.innerHTML = `<div class="empty-state"><i class="fas fa-user-slash"></i><h3>Customer not found</h3><p>${msg}</p><p style="margin-top:12px;color:#9ca3af;font-size:13px">Tried: ${variants.join(', ')}<br/>Request example: ${API_URL}/api/customers/${variants[0]}</p></div>`;
-                } else {
-                    showAlert('Customer not found', 'error');
-                    resultsDiv.innerHTML = `<div class="empty-state"><i class="fas fa-user-slash"></i><h3>Customer not found</h3><p>No response from server.</p></div>`;
+                if (!response.ok) {
+                    const serverMsg = (body && (body.error || body.message)) || raw || response.statusText;
+                    throw new Error(serverMsg);
                 }
 
+                // At this point we expect JSON body
+                const data = body || JSON.parse(raw);
+                displayCustomerProfile(data);
             } catch (error) {
-                console.error('Error fetching customer (variants):', error);
-                showAlert('Error loading customer: ' + (error.message || error), 'error');
+                // Show raw error text if available and log details to console for debugging
+                console.error('Error fetching customer:', { url: `${API_URL}/api/customers/${customerId}`, error });
+                showAlert('Error loading customer: ' + error.message, 'error');
             } finally {
                 showLoading('analyticsLoading', false);
             }
@@ -1950,11 +1915,12 @@
                 `;
                 return;
             }
+
             const profile = data.profile || {};
             // Normalize transaction array from possible fields returned by backend
             const transactions = data.purchases || data.transactions || data.orders || data.history || data.recent_purchases || [];
 
-            // Helper to safely read multiple possible keys (case-insensitive)
+            // Helper to safely read multiple possible keys
             const get = (obj, ...keys) => {
                 for (const k of keys) {
                     if (obj == null) continue;
@@ -1967,40 +1933,26 @@
                 return undefined;
             };
 
-            // Friendly formatters
-            const fmtMoney = v => {
-                const n = Number(v);
-                if (isNaN(n)) return '0.00';
-                return n.toFixed(2);
-            };
-
-            // Map profile fields returned by the Python backend (case/column-name tolerant)
-            const monetary = get(profile, 'Monetary', 'monetary', 'MonetaryValue', 'TotalPrice', 'total_spent', 'TotalSpent') || 0;
-            const frequency = get(profile, 'Frequency', 'frequency', 'InvoiceNo', 'Orders', 'frequency') || 0;
-            const totalItems = get(profile, 'TotalItems', 'total_items', 'Quantity', 'TotalItems') || 0;
-            const avgOrder = get(profile, 'AvgOrderValue', 'avg_order_value', 'AvgOrder', 'avg_order') || 0;
-            const clusterLabel = get(profile, 'Cluster_Label', 'cluster_label', 'Cluster_Label', 'Cluster', 'cluster', 'Cluster_Label', 'Cluster_Label') || get(profile, 'Cluster_Label', 'Cluster', 'segment', 'Segment') || 'N/A';
-
             resultsDiv.innerHTML = `
                 <div class="customer-profile">
-                    <h3>Customer ${data.customer_id || (profile.CustomerID || profile.customerid || '')}</h3>
-                    <div class="customer-segment">${clusterLabel}</div>
+                    <h3>Customer ${data.customer_id || ''}</h3>
+                    <div class="customer-segment">${profile.segment || 'N/A'}</div>
                     <div class="profile-stats">
                         <div class="profile-stat">
                             <div class="label">Total Spending</div>
-                            <div class="value">£${fmtMoney(monetary)}</div>
+                            <div class="value">£${(profile.monetary || 0).toFixed(2)}</div>
                         </div>
                         <div class="profile-stat">
                             <div class="label">Total Orders</div>
-                            <div class="value">${frequency}</div>
+                            <div class="value">${profile.frequency || 0}</div>
                         </div>
                         <div class="profile-stat">
                             <div class="label">Total Items</div>
-                            <div class="value">${totalItems}</div>
+                            <div class="value">${profile.total_items || 0}</div>
                         </div>
                         <div class="profile-stat">
                             <div class="label">Avg Order</div>
-                            <div class="value">£${fmtMoney(avgOrder)}</div>
+                            <div class="value">£${(profile.avg_order_value || 0).toFixed(2)}</div>
                         </div>
                     </div>
                     
@@ -2021,8 +1973,6 @@
                                             <th>Description</th>
                                             <th>Quantity</th>
                                             <th>Country</th>
-                                            <th>Date</th>
-                                            <th>Invoice</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -2032,8 +1982,6 @@
                                                 <td>${(get(tx,'Description','description','Desc') || '-')}</td>
                                                 <td>${(get(tx,'Quantity','quantity','Qty','qty') || 0)}</td>
                                                 <td>${(get(tx,'Country','country','CountryName') || '-')}</td>
-                                                <td>${(get(tx,'InvoiceDate','invoice_date','Invoice_Date') || '-')}</td>
-                                                <td>${(get(tx,'InvoiceNo','invoice_no','Invoice','invoice') || '-')}</td>
                                             </tr>
                                         `).join('')}
                                     </tbody>

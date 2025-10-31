@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Commerce AI Recommendation System</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,7 +16,7 @@
         }
 
         :root {
-            --primary: #2563eb; /* professional blue */
+            --primary: #2563eb;
             --primary-dark: #1e40af;
             --primary-light: #60a5fa;
             --secondary: #06b6d4;
@@ -25,7 +27,6 @@
             --light: #f9fafb;
             --border: #e6edf8;
             --shadow: rgba(2, 6, 23, 0.06);
-            /* Replace full gradients with single-tone accents for a cleaner, professional look */
             --gradient-1: #2563eb;
             --gradient-2: #06b6d4;
             --gradient-3: #10b981;
@@ -34,7 +35,6 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            /* subtle neutral background for a professional, calm canvas */
             background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
             min-height: 100vh;
             overflow-x: hidden;
@@ -89,6 +89,7 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -114,8 +115,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .connection-icon i {
@@ -227,6 +235,7 @@
                 opacity: 0;
                 transform: translateY(-10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -347,10 +356,13 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 1;
                 transform: scale(1);
             }
+
             50% {
                 opacity: 0.7;
                 transform: scale(1.1);
@@ -393,6 +405,7 @@
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
@@ -501,6 +514,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -518,11 +532,11 @@
         .stat-card {
             background: white;
             border-radius: 20px;
-            padding: 28px 36px 28px 28px; /* give extra right padding so values don't get visually cropped */
+            padding: 28px 36px 28px 28px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s;
             position: relative;
-            overflow: visible; /* allow subtle icon shadows to show without clipping */
+            overflow: visible;
         }
 
         .stat-card::before {
@@ -570,13 +584,12 @@
             color: white;
             flex-shrink: 0;
             box-shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
-            background: var(--gradient-1); /* sensible fallback if nth-child color not applied */
-            margin-left: 12px; /* separate the icon from the edge */
+            background: var(--gradient-1);
+            margin-left: 12px;
             position: relative;
             right: 0;
         }
 
-        /* ensure icons and any images inside stat-icon are visible and appropriately sized */
         .stat-icon i {
             font-size: 20px;
             color: white;
@@ -930,7 +943,7 @@
 
         /* Customer Profile */
         .customer-profile {
-            background: var(--gradient-1);
+            background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-2) 100%);
             border-radius: 20px;
             padding: 35px;
             color: white;
@@ -980,6 +993,110 @@
             font-weight: 700;
         }
 
+        /* Analytics Tabs */
+        .analytics-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .analytics-tab {
+            padding: 12px 24px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            color: var(--dark);
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .analytics-tab:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .analytics-tab.active {
+            background: var(--gradient-1);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .analytics-section {
+            display: none;
+        }
+
+        .analytics-section.active {
+            display: block;
+        }
+
+        /* Segment Card */
+        .segment-card {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .segment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .segment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .segment-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .segment-percentage {
+            padding: 8px 16px;
+            background: #dbeafe;
+            color: #1e40af;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .segment-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .segment-stat {
+            text-align: center;
+            padding: 15px;
+            background: #f9fafb;
+            border-radius: 12px;
+        }
+
+        .segment-stat .label {
+            font-size: 11px;
+            color: #6b7280;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .segment-stat .value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
         /* Loading */
         .loading-container {
             display: none;
@@ -1002,8 +1119,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .loading-text {
@@ -1147,6 +1269,11 @@
             .content-card {
                 padding: 25px 20px;
             }
+
+            .analytics-tabs {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+            }
         }
 
         /* Alert Notifications */
@@ -1174,6 +1301,7 @@
                 opacity: 0;
                 transform: translateX(100px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -1209,6 +1337,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Connection Screen (Initially Visible) -->
     <div class="connection-screen" id="connectionScreen">
@@ -1225,12 +1354,8 @@
                 <label for="apiUrl">API Endpoint URL</label>
                 <div class="input-wrapper">
                     <i class="fas fa-link"></i>
-                    <input 
-                        type="text" 
-                        id="apiUrl" 
-                        class="connection-input"
-                        placeholder="https://your-ngrok-url.ngrok-free.app"
-                    />
+                    <input type="text" id="apiUrl" class="connection-input"
+                        placeholder="https://your-ngrok-url.ngrok-free.app" />
                 </div>
             </div>
 
@@ -1316,12 +1441,8 @@
                                 <div class="search-box">
                                     <div class="search-input-wrapper">
                                         <i class="fas fa-search"></i>
-                                        <input 
-                                            type="text" 
-                                            id="productSearch" 
-                                            class="search-input"
-                                            placeholder="Search for products..."
-                                        />
+                                        <input type="text" id="productSearch" class="search-input"
+                                            placeholder="Search for products..." />
                                     </div>
                                     <button class="btn btn-primary" onclick="searchProducts()">
                                         <i class="fas fa-search"></i>
@@ -1355,11 +1476,7 @@
                                 <div class="form-grid">
                                     <div class="form-group">
                                         <label>Stock Code</label>
-                                        <input 
-                                            type="text" 
-                                            id="recStockCode" 
-                                            placeholder="e.g., 85123A"
-                                        />
+                                        <input type="text" id="recStockCode" placeholder="e.g., 85123A" />
                                     </div>
                                     <div class="form-group">
                                         <label>Number of Recommendations</label>
@@ -1396,30 +1513,73 @@
                                 </h2>
                             </div>
 
-                            <div class="form-section">
-                                <h3>Customer Profile Lookup</h3>
-                                <div class="form-grid">
-                                    <div class="form-group">
-                                        <label>Customer ID</label>
-                                        <input 
-                                            type="text" 
-                                            id="customerId" 
-                                            placeholder="Enter customer ID"
-                                        />
-                                    </div>
+                            <!-- Analytics Navigation Tabs -->
+                            <div class="analytics-tabs">
+                                <div class="analytics-tab active" onclick="switchAnalyticsTab('overview')">
+                                    <i class="fas fa-chart-pie"></i> Overview
                                 </div>
-                                <button class="btn btn-primary" onclick="getCustomerProfile()">
-                                    <i class="fas fa-search"></i>
-                                    Get Customer Profile
-                                </button>
+                                <div class="analytics-tab" onclick="switchAnalyticsTab('segments')">
+                                    <i class="fas fa-users-cog"></i> Segments
+                                </div>
+                                <div class="analytics-tab" onclick="switchAnalyticsTab('individual')">
+                                    <i class="fas fa-user"></i> Individual Customer
+                                </div>
+                                <div class="analytics-tab" onclick="switchAnalyticsTab('rfm')">
+                                    <i class="fas fa-chart-bar"></i> RFM Analysis
+                                </div>
                             </div>
 
-                            <div class="loading-container" id="analyticsLoading">
-                                <div class="loading-spinner"></div>
-                                <div class="loading-text">Loading customer data...</div>
+                            <!-- Overview Section -->
+                            <div id="analyticsOverview" class="analytics-section active">
+                                <div class="loading-container" id="overviewLoading">
+                                    <div class="loading-spinner"></div>
+                                    <div class="loading-text">Loading customer overview...</div>
+                                </div>
+                                <div id="overviewResults"></div>
                             </div>
 
-                            <div id="customerProfileResults"></div>
+                            <!-- Segments Section -->
+                            <div id="analyticsSegments" class="analytics-section">
+                                <div class="loading-container" id="segmentsLoading">
+                                    <div class="loading-spinner"></div>
+                                    <div class="loading-text">Loading customer segments...</div>
+                                </div>
+                                <div id="segmentsResults"></div>
+                            </div>
+
+                            <!-- Individual Customer Section -->
+                            <div id="analyticsIndividual" class="analytics-section">
+                                <div class="form-section">
+                                    <h3>Customer Profile Lookup</h3>
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label>Customer ID</label>
+                                            <input type="text" id="customerId"
+                                                placeholder="Enter customer ID (e.g., 12346)" />
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="getCustomerProfile()">
+                                        <i class="fas fa-search"></i>
+                                        Get Customer Profile
+                                    </button>
+                                </div>
+
+                                <div class="loading-container" id="analyticsLoading">
+                                    <div class="loading-spinner"></div>
+                                    <div class="loading-text">Loading customer data...</div>
+                                </div>
+
+                                <div id="customerProfileResults"></div>
+                            </div>
+
+                            <!-- RFM Analysis Section -->
+                            <div id="analyticsRFM" class="analytics-section">
+                                <div class="loading-container" id="rfmLoading">
+                                    <div class="loading-spinner"></div>
+                                    <div class="loading-text">Loading RFM analysis...</div>
+                                </div>
+                                <div id="rfmResults"></div>
+                            </div>
                         </div>
                     </div>
 
@@ -1452,24 +1612,12 @@
                                 <div class="form-grid">
                                     <div class="form-group">
                                         <label>Minimum Confidence</label>
-                                        <input 
-                                            type="number" 
-                                            id="minConfidence" 
-                                            value="0.5" 
-                                            step="0.1" 
-                                            min="0" 
-                                            max="1"
-                                        />
+                                        <input type="number" id="minConfidence" value="0.5" step="0.1" min="0"
+                                            max="1" />
                                     </div>
                                     <div class="form-group">
                                         <label>Minimum Lift</label>
-                                        <input 
-                                            type="number" 
-                                            id="minLift" 
-                                            value="1.0" 
-                                            step="0.1" 
-                                            min="0"
-                                        />
+                                        <input type="number" id="minLift" value="1.0" step="0.1" min="0" />
                                     </div>
                                 </div>
                                 <button class="btn btn-primary" onclick="getAssociationRules()">
@@ -1529,11 +1677,8 @@
                                 <div class="form-grid">
                                     <div class="form-group">
                                         <label>Countries (comma-separated)</label>
-                                        <input 
-                                            type="text" 
-                                            id="diceCountries" 
-                                            placeholder="United Kingdom, Germany, France"
-                                        />
+                                        <input type="text" id="diceCountries"
+                                            placeholder="United Kingdom, Germany, France" />
                                     </div>
                                     <div class="form-group">
                                         <label>Start Date</label>
@@ -1600,11 +1745,11 @@
             }
 
             API_URL = url.replace(/\/$/, '');
-            
+
             const btn = document.querySelector('.connect-btn');
             btn.classList.add('loading');
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Connecting...</span>';
-            
+
             showConnectionStatus('Testing connection...', 'loading');
 
             try {
@@ -1615,11 +1760,10 @@
                 if (response.ok) {
                     const data = await response.json();
                     isConnected = true;
-                    
+
                     showConnectionStatus('Connection successful! Redirecting...', 'success');
                     localStorage.setItem('apiUrl', API_URL);
 
-                    // Animate transition to dashboard
                     setTimeout(() => {
                         document.getElementById('connectionScreen').classList.add('hidden');
                         document.getElementById('mainDashboard').classList.add('visible');
@@ -1661,8 +1805,7 @@
                 localStorage.removeItem('apiUrl');
                 document.getElementById('mainDashboard').classList.remove('visible');
                 document.getElementById('connectionScreen').classList.remove('hidden');
-                
-                // Reset connection form
+
                 const btn = document.querySelector('.connect-btn');
                 btn.classList.remove('loading');
                 btn.innerHTML = '<i class="fas fa-plug"></i><span>Connect to API</span>';
@@ -1672,24 +1815,532 @@
 
         // Switch Tabs
         function switchTab(tabName) {
-            // Update nav items
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('active');
             });
             event.target.classList.add('active');
 
-            // Update content
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
             });
             document.getElementById(tabName).classList.add('active');
 
-            // Load data for specific tabs
             if (tabName === 'explore' && isConnected) {
                 loadProducts();
             } else if (tabName === 'statistics' && isConnected) {
                 loadStatistics();
+            } else if (tabName === 'analytics' && isConnected) {
+                loadCustomerOverview();
             }
+        }
+
+        // Switch Analytics Tabs
+        function switchAnalyticsTab(tabName) {
+            document.querySelectorAll('.analytics-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            document.querySelectorAll('.analytics-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            if (tabName === 'overview') {
+                document.getElementById('analyticsOverview').classList.add('active');
+                loadCustomerOverview();
+            } else if (tabName === 'segments') {
+                document.getElementById('analyticsSegments').classList.add('active');
+                loadCustomerSegments();
+            } else if (tabName === 'individual') {
+                document.getElementById('analyticsIndividual').classList.add('active');
+            } else if (tabName === 'rfm') {
+                document.getElementById('analyticsRFM').classList.add('active');
+                loadRFMAnalysis();
+            }
+        }
+
+        // Load Customer Overview
+        async function loadCustomerOverview() {
+            if (!isConnected) return;
+
+            showLoading('overviewLoading', true);
+
+            try {
+                const response = await fetch(`${API_URL}/api/analytics/customers/overview`, {
+                    headers: { 'ngrok-skip-browser-warning': 'true' }
+                });
+
+                if (!response.ok) throw new Error('Failed to load customer overview');
+
+                const data = await response.json();
+                displayCustomerOverview(data);
+            } catch (error) {
+                showAlert('Error loading customer overview: ' + error.message, 'error');
+            } finally {
+                showLoading('overviewLoading', false);
+            }
+        }
+
+        // Display Customer Overview
+        function displayCustomerOverview(data) {
+            const resultsDiv = document.getElementById('overviewResults');
+
+            resultsDiv.innerHTML = `
+                <h3 style="margin: 0 0 25px; font-size: 22px; color: var(--dark);">
+                    <i class="fas fa-chart-pie" style="color: var(--gradient-1);"></i>
+                    Customer Overview
+                </h3>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <h3>Total Customers</h3>
+                                <div class="stat-value">${data.total_customers?.toLocaleString() || 0}</div>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <h3>Avg Customer Value</h3>
+                                <div class="stat-value">£${(data.avg_customer_value || 0).toFixed(2)}</div>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-pound-sign"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <h3>Avg Order Frequency</h3>
+                                <div class="stat-value">${(data.avg_order_frequency || 0).toFixed(1)}</div>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin: 40px 0 20px; font-size: 20px; color: var(--dark);">
+                    Customer Segments Distribution
+                </h3>
+                <div class="stats-grid">
+                    ${Object.entries(data.segment_distribution || {}).map(([segment, count]) => `
+                        <div class="stat-card">
+                            <h3>${segment}</h3>
+                            <div class="stat-value">${count}</div>
+                            <div class="stat-change">
+                                ${((count / data.total_customers) * 100).toFixed(1)}% of total
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <h3 style="margin: 40px 0 20px; font-size: 20px; color: var(--dark);">
+                    Top Customers by CLV
+                </h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Customer ID</th>
+                                <th>CLV</th>
+                                <th>Total Spending</th>
+                                <th>Frequency</th>
+                                <th>Segment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${(data.top_customers || []).map(customer => `
+                                <tr>
+                                    <td>${customer.CustomerID}</td>
+                                    <td>£${(customer.CLV || 0).toFixed(2)}</td>
+                                    <td>£${(customer.Monetary || 0).toFixed(2)}</td>
+                                    <td>${customer.Frequency || 0}</td>
+                                    <td><span class="badge badge-confidence">${customer.Cluster_Label || 'N/A'}</span></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        // Load Customer Segments
+        async function loadCustomerSegments() {
+            if (!isConnected) return;
+
+            showLoading('segmentsLoading', true);
+
+            try {
+                const response = await fetch(`${API_URL}/api/analytics/customers/segments`, {
+                    headers: { 'ngrok-skip-browser-warning': 'true' }
+                });
+
+                if (!response.ok) throw new Error('Failed to load customer segments');
+
+                const data = await response.json();
+                displayCustomerSegments(data);
+            } catch (error) {
+                showAlert('Error loading customer segments: ' + error.message, 'error');
+            } finally {
+                showLoading('segmentsLoading', false);
+            }
+        }
+
+        // Display Customer Segments
+        function displayCustomerSegments(data) {
+            const resultsDiv = document.getElementById('segmentsResults');
+
+            resultsDiv.innerHTML = `
+                <h3 style="margin: 0 0 25px; font-size: 22px; color: var(--dark);">
+                    <i class="fas fa-users-cog" style="color: var(--gradient-2);"></i>
+                    Customer Segmentation Analysis
+                </h3>
+
+                ${(data.segments || []).map(segment => `
+                    <div class="segment-card">
+                        <div class="segment-header">
+                            <div class="segment-name">
+                                <i class="fas fa-users" style="color: var(--gradient-1); margin-right: 10px;"></i>
+                                ${segment.segment_name}
+                            </div>
+                            <div class="segment-percentage">
+                                ${segment.percentage?.toFixed(1)}% (${segment.customer_count} customers)
+                            </div>
+                        </div>
+
+                        <div class="segment-stats">
+                            <div class="segment-stat">
+                                <div class="label">Avg Recency</div>
+                                <div class="value">${segment.avg_recency?.toFixed(0)} days</div>
+                            </div>
+                            <div class="segment-stat">
+                                <div class="label">Avg Frequency</div>
+                                <div class="value">${segment.avg_frequency?.toFixed(1)}</div>
+                            </div>
+                            <div class="segment-stat">
+                                <div class="label">Avg Monetary</div>
+                                <div class="value">£${segment.avg_monetary?.toFixed(2)}</div>
+                            </div>
+                            <div class="segment-stat">
+                                <div class="label">Avg CLV</div>
+                                <div class="value">£${segment.avg_clv?.toFixed(2)}</div>
+                            </div>
+                        </div>
+
+                        <h4 style="margin: 20px 0 15px; font-size: 16px; color: var(--dark);">
+                            Top Customers in Segment
+                        </h4>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Customer ID</th>
+                                        <th>Total Spending</th>
+                                        <th>Frequency</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${(segment.top_customers || []).map(customer => `
+                                        <tr>
+                                            <td>${customer.CustomerID}</td>
+                                            <td>£${(customer.Monetary || 0).toFixed(2)}</td>
+                                            <td>${customer.Frequency || 0}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `).join('')}
+            `;
+        }
+
+        // Get Customer Profile
+        async function getCustomerProfile() {
+            if (!isConnected) {
+                showAlert('Please connect to the API first', 'error');
+                return;
+            }
+
+            const customerId = document.getElementById('customerId').value.trim();
+
+            if (!customerId) {
+                showAlert('Please enter a customer ID', 'error');
+                return;
+            }
+
+            showLoading('analyticsLoading', true);
+
+            try {
+                // Fetch customer profile
+                const profileResponse = await fetch(`${API_URL}/api/customers/${customerId}`, {
+                    headers: { 'ngrok-skip-browser-warning': 'true' }
+                });
+
+                if (profileResponse.status === 404) {
+                    showAlert(`Customer ID ${customerId} not found`, 'error');
+                    const resultsDiv = document.getElementById('customerProfileResults');
+                    resultsDiv.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-user-slash"></i>
+                            <h3>Customer Not Found</h3>
+                            <p>No customer found with ID: ${customerId}</p>
+                            <p style="margin-top: 15px; font-size: 13px; color: #9ca3af;">
+                                Try searching for a different customer ID
+                            </p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                if (!profileResponse.ok) throw new Error('Failed to load customer profile');
+
+                const profile = await profileResponse.json();
+
+                // Fetch customer history
+                let history = [];
+                try {
+                    const historyResponse = await fetch(`${API_URL}/api/customers/${customerId}/history`, {
+                        headers: { 'ngrok-skip-browser-warning': 'true' }
+                    });
+                    if (historyResponse.ok) {
+                        const historyData = await historyResponse.json();
+                        history = historyData.history || [];
+                    }
+                } catch (e) {
+                    console.warn('Could not load customer history:', e);
+                }
+
+                displayCustomerProfile(profile, history);
+            } catch (error) {
+                showAlert('Error loading customer: ' + error.message, 'error');
+                console.error('Customer profile error:', error);
+            } finally {
+                showLoading('analyticsLoading', false);
+            }
+        }
+
+        // Display Customer Profile
+        function displayCustomerProfile(profile, history = []) {
+            const resultsDiv = document.getElementById('customerProfileResults');
+
+            resultsDiv.innerHTML = `
+                <div class="customer-profile">
+                    <h3>Customer ${profile.CustomerID || 'N/A'}</h3>
+                    <div class="customer-segment">${profile.Cluster_Label || 'N/A'}</div>
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <div class="label">Total Spending</div>
+                            <div class="value">£${(profile.Monetary || 0).toFixed(2)}</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="label">Total Orders</div>
+                            <div class="value">${profile.Frequency || 0}</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="label">Total Items</div>
+                            <div class="value">${profile.TotalItems || 0}</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="label">Avg Order</div>
+                            <div class="value">£${(profile.AvgOrderValue || 0).toFixed(2)}</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="label">Recency</div>
+                            <div class="value">${profile.Recency || 0} days</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="label">CLV Score</div>
+                            <div class="value">${(profile.CLV_Score || 0).toFixed(1)}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin: 30px 0 20px; font-size: 20px; color: var(--dark);">
+                    <i class="fas fa-shopping-bag" style="color: var(--gradient-3);"></i>
+                    Purchase History
+                </h3>
+                ${history.length === 0 ? `
+                    <div class="empty-state">
+                        <i class="fas fa-shopping-bag"></i>
+                        <h3>No Purchase History</h3>
+                        <p>No purchase records found for this customer</p>
+                    </div>
+                ` : `
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Invoice</th>
+                                    <th>Date</th>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${history.slice(0, 20).map(item => `
+                                    <tr>
+                                        <td>${item.InvoiceNo || 'N/A'}</td>
+                                        <td>${item.InvoiceDate ? new Date(item.InvoiceDate).toLocaleDateString() : 'N/A'}</td>
+                                        <td>${item.Description || 'N/A'}</td>
+                                        <td>${item.Quantity || 0}</td>
+                                        <td>£${(item.UnitPrice || 0).toFixed(2)}</td>
+                                        <td>£${(item.TotalPrice || 0).toFixed(2)}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                    ${history.length > 20 ? `
+                        <p style="text-align: center; margin-top: 15px; color: #6b7280; font-size: 14px;">
+                            Showing 20 of ${history.length} transactions
+                        </p>
+                    ` : ''}
+                `}
+            `;
+        }
+
+        // Load RFM Analysis
+        async function loadRFMAnalysis() {
+            if (!isConnected) return;
+
+            showLoading('rfmLoading', true);
+
+            try {
+                const response = await fetch(`${API_URL}/api/analytics/customers/rfm`, {
+                    headers: { 'ngrok-skip-browser-warning': 'true' }
+                });
+
+                if (!response.ok) throw new Error('Failed to load RFM analysis');
+
+                const data = await response.json();
+                displayRFMAnalysis(data);
+            } catch (error) {
+                showAlert('Error loading RFM analysis: ' + error.message, 'error');
+            } finally {
+                showLoading('rfmLoading', false);
+            }
+        }
+
+        // Display RFM Analysis
+        function displayRFMAnalysis(data) {
+            const resultsDiv = document.getElementById('rfmResults');
+
+            resultsDiv.innerHTML = `
+                <h3 style="margin: 0 0 25px; font-size: 22px; color: var(--dark);">
+                    <i class="fas fa-chart-bar" style="color: var(--gradient-4);"></i>
+                    RFM (Recency, Frequency, Monetary) Analysis
+                </h3>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <h3>Total Customers</h3>
+                                <div class="stat-value">${data.total_customers?.toLocaleString() || 0}</div>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin: 40px 0 20px; font-size: 20px; color: var(--dark);">
+                    Recency Distribution
+                </h3>
+                <div class="stats-grid">
+                    ${Object.entries(data.distribution?.recency || {}).map(([segment, count]) => `
+                        <div class="stat-card">
+                            <h3>${segment}</h3>
+                            <div class="stat-value">${count}</div>
+                            <div class="stat-change">
+                                ${((count / data.total_customers) * 100).toFixed(1)}% of customers
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <h3 style="margin: 40px 0 20px; font-size: 20px; color: var(--dark);">
+                    Frequency Distribution
+                </h3>
+                <div class="stats-grid">
+                    ${Object.entries(data.distribution?.frequency || {}).map(([segment, count]) => `
+                        <div class="stat-card">
+                            <h3>${segment}</h3>
+                            <div class="stat-value">${count}</div>
+                            <div class="stat-change">
+                                ${((count / data.total_customers) * 100).toFixed(1)}% of customers
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <h3 style="margin: 40px 0 20px; font-size: 20px; color: var(--dark);">
+                    Monetary Distribution
+                </h3>
+                <div class="stats-grid">
+                    ${Object.entries(data.distribution?.monetary || {}).map(([segment, count]) => `
+                        <div class="stat-card">
+                            <h3>${segment}</h3>
+                            <div class="stat-value">${count}</div>
+                            <div class="stat-change">
+                                ${((count / data.total_customers) * 100).toFixed(1)}% of customers
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <h3 style="margin: 40px 0 20px; font-size: 20px; color: var(--dark);">
+                    RFM Statistics
+                </h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Minimum</th>
+                                <th>Maximum</th>
+                                <th>Mean</th>
+                                <th>Median</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Recency (days)</strong></td>
+                                <td>${data.statistics?.recency?.min?.toFixed(0) || 0}</td>
+                                <td>${data.statistics?.recency?.max?.toFixed(0) || 0}</td>
+                                <td>${data.statistics?.recency?.mean?.toFixed(1) || 0}</td>
+                                <td>${data.statistics?.recency?.median?.toFixed(1) || 0}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Frequency (orders)</strong></td>
+                                <td>${data.statistics?.frequency?.min?.toFixed(0) || 0}</td>
+                                <td>${data.statistics?.frequency?.max?.toFixed(0) || 0}</td>
+                                <td>${data.statistics?.frequency?.mean?.toFixed(1) || 0}</td>
+                                <td>${data.statistics?.frequency?.median?.toFixed(1) || 0}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Monetary (£)</strong></td>
+                                <td>£${data.statistics?.monetary?.min?.toFixed(2) || 0}</td>
+                                <td>£${data.statistics?.monetary?.max?.toFixed(2) || 0}</td>
+                                <td>£${data.statistics?.monetary?.mean?.toFixed(2) || 0}</td>
+                                <td>£${data.statistics?.monetary?.median?.toFixed(2) || 0}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            `;
         }
 
         // Load Products
@@ -1719,7 +2370,7 @@
         // Display Products
         function displayProducts(products) {
             const grid = document.getElementById('productsGrid');
-            
+
             if (products.length === 0) {
                 grid.innerHTML = `
                     <div class="empty-state">
@@ -1866,154 +2517,6 @@
             `;
         }
 
-        // Get Customer Profile
-        async function getCustomerProfile() {
-            if (!isConnected) {
-                showAlert('Please connect to the API first', 'error');
-                return;
-            }
-
-            const customerId = document.getElementById('customerId').value.trim();
-
-            if (!customerId) {
-                showAlert('Please enter a customer ID', 'error');
-                return;
-            }
-
-            showLoading('analyticsLoading', true);
-
-            try {
-                const response = await fetch(`${API_URL}/api/customers/${customerId}`, {
-                    headers: { 'ngrok-skip-browser-warning': 'true' }
-                });
-
-                // Read raw response text so we can show useful diagnostic info even when server
-                // returns an HTML error page (which would break JSON.parse)
-                const raw = await response.text();
-
-                // Try to parse JSON if possible
-                let body = null;
-                try { body = JSON.parse(raw); } catch (_) { body = null; }
-
-                // If 404, show a clear message and include server body (if any)
-                if (response.status === 404) {
-                    const serverMsg = (body && (body.error || body.message)) || raw || response.statusText;
-                    showAlert(`No customer found for ID ${customerId}: ${serverMsg}`, 'error');
-                    console.warn('Customer lookup 404', { url: `${API_URL}/api/customers/${customerId}`, status: response.status, body: raw });
-                    // Also write a helpful message into the results area
-                    const resultsDiv = document.getElementById('customerProfileResults');
-                    resultsDiv.innerHTML = `<div class="empty-state"><i class="fas fa-user-slash"></i><h3>Customer not found</h3><p>${serverMsg}</p><p style="margin-top:12px;color:#9ca3af;font-size:13px">Request URL: ${API_URL}/api/customers/${customerId}</p></div>`;
-                    return;
-                }
-
-                if (!response.ok) {
-                    const serverMsg = (body && (body.error || body.message)) || raw || response.statusText;
-                    throw new Error(serverMsg);
-                }
-
-                // At this point we expect JSON body
-                const data = body || JSON.parse(raw);
-                displayCustomerProfile(data);
-            } catch (error) {
-                // Show raw error text if available and log details to console for debugging
-                console.error('Error fetching customer:', { url: `${API_URL}/api/customers/${customerId}`, error });
-                showAlert('Error loading customer: ' + error.message, 'error');
-            } finally {
-                showLoading('analyticsLoading', false);
-            }
-        }
-
-        // Display Customer Profile
-        function displayCustomerProfile(data) {
-            const resultsDiv = document.getElementById('customerProfileResults');
-            if (!data || data.error) {
-                resultsDiv.innerHTML = `
-                    <div class="empty-state">
-                        <i class="fas fa-user-slash"></i>
-                        <h3>Customer not found</h3>
-                        <p>No data available for this customer.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            const profile = data.profile || {};
-            // Normalize transaction array from possible fields returned by backend
-            const transactions = data.purchases || data.transactions || data.orders || data.history || data.recent_purchases || [];
-
-            // Helper to safely read multiple possible keys
-            const get = (obj, ...keys) => {
-                for (const k of keys) {
-                    if (obj == null) continue;
-                    if (k in obj) return obj[k];
-                    const lk = k.toLowerCase();
-                    for (const key of Object.keys(obj)) {
-                        if (key.toLowerCase() === lk) return obj[key];
-                    }
-                }
-                return undefined;
-            };
-
-            resultsDiv.innerHTML = `
-                <div class="customer-profile">
-                    <h3>Customer ${data.customer_id || ''}</h3>
-                    <div class="customer-segment">${profile.segment || 'N/A'}</div>
-                    <div class="profile-stats">
-                        <div class="profile-stat">
-                            <div class="label">Total Spending</div>
-                            <div class="value">£${(profile.monetary || 0).toFixed(2)}</div>
-                        </div>
-                        <div class="profile-stat">
-                            <div class="label">Total Orders</div>
-                            <div class="value">${profile.frequency || 0}</div>
-                        </div>
-                        <div class="profile-stat">
-                            <div class="label">Total Items</div>
-                            <div class="value">${profile.total_items || 0}</div>
-                        </div>
-                        <div class="profile-stat">
-                            <div class="label">Avg Order</div>
-                            <div class="value">£${(profile.avg_order_value || 0).toFixed(2)}</div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top:20px">
-                        <h4 style="margin:0 0 12px 0;color:var(--dark)">Recent Purchases</h4>
-                        ${transactions.length === 0 ? `
-                            <div class="empty-state">
-                                <i class="fas fa-box-open"></i>
-                                <h3>No purchase records</h3>
-                                <p>This customer has no recorded purchases in the returned data.</p>
-                            </div>
-                        ` : `
-                            <div class="table-container">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Stock Code</th>
-                                            <th>Description</th>
-                                            <th>Quantity</th>
-                                            <th>Country</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        ${transactions.slice(0,20).map(tx => `
-                                            <tr>
-                                                <td>${(get(tx,'StockCode','stock_code','Stock','stock') || '-')}</td>
-                                                <td>${(get(tx,'Description','description','Desc') || '-')}</td>
-                                                <td>${(get(tx,'Quantity','quantity','Qty','qty') || 0)}</td>
-                                                <td>${(get(tx,'Country','country','CountryName') || '-')}</td>
-                                            </tr>
-                                        `).join('')}
-                                    </tbody>
-                                </table>
-                            </div>
-                        `}
-                    </div>
-                </div>
-            `;
-        }
-
         // Load Statistics
         async function loadStatistics() {
             if (!isConnected) return;
@@ -2077,7 +2580,7 @@
                     <div class="stat-header">
                         <div>
                             <h3>Total Revenue</h3>
-                            <div class="stat-value">£${(stats.total_revenue || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
+                            <div class="stat-value">£${(stats.total_revenue || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
                             <div class="stat-change"><i class="fas fa-arrow-up"></i> +15.2%</div>
                         </div>
                         <div class="stat-icon">
@@ -2285,7 +2788,7 @@
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-pound-sign"></i></div>
                         <h3>Revenue</h3>
-                        <div class="stat-value">£${(data.total_revenue || 0).toLocaleString(undefined, {minimumFractionDigits: 2})}</div>
+                        <div class="stat-value">£${(data.total_revenue || 0).toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-users"></i></div>
@@ -2337,8 +2840,8 @@
         // Format Value
         function formatValue(value) {
             if (typeof value === 'number') {
-                return value > 1000 
-                    ? value.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})
+                return value > 1000
+                    ? value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
                     : value.toFixed(2);
             }
             return value;
@@ -2356,7 +2859,7 @@
         function showAlert(message, type) {
             const alertDiv = document.createElement('div');
             alertDiv.className = `alert alert-${type} show`;
-            
+
             const icons = {
                 success: 'fa-check-circle',
                 error: 'fa-exclamation-circle',
@@ -2367,7 +2870,7 @@
                 <i class="fas ${icons[type]}"></i>
                 <div class="alert-message">${message}</div>
             `;
-            
+
             document.body.appendChild(alertDiv);
 
             setTimeout(() => {
@@ -2384,4 +2887,5 @@
         });
     </script>
 </body>
+
 </html>

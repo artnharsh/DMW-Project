@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Commerce AI Recommendation System</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -89,7 +87,6 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -115,15 +112,8 @@
         }
 
         @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .connection-icon i {
@@ -235,7 +225,6 @@
                 opacity: 0;
                 transform: translateY(-10px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -356,13 +345,10 @@
         }
 
         @keyframes pulse {
-
-            0%,
-            100% {
+            0%, 100% {
                 opacity: 1;
                 transform: scale(1);
             }
-
             50% {
                 opacity: 0.7;
                 transform: scale(1.1);
@@ -405,7 +391,6 @@
             from {
                 opacity: 0;
             }
-
             to {
                 opacity: 1;
             }
@@ -514,7 +499,6 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1119,13 +1103,8 @@
         }
 
         @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .loading-text {
@@ -1301,7 +1280,6 @@
                 opacity: 0;
                 transform: translateX(100px);
             }
-
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -1337,7 +1315,6 @@
         }
     </style>
 </head>
-
 <body>
     <!-- Connection Screen (Initially Visible) -->
     <div class="connection-screen" id="connectionScreen">
@@ -1354,8 +1331,12 @@
                 <label for="apiUrl">API Endpoint URL</label>
                 <div class="input-wrapper">
                     <i class="fas fa-link"></i>
-                    <input type="text" id="apiUrl" class="connection-input"
-                        placeholder="https://your-ngrok-url.ngrok-free.app" />
+                    <input 
+                        type="text" 
+                        id="apiUrl" 
+                        class="connection-input"
+                        placeholder="https://your-ngrok-url.ngrok-free.app"
+                    />
                 </div>
             </div>
 
@@ -1441,8 +1422,12 @@
                                 <div class="search-box">
                                     <div class="search-input-wrapper">
                                         <i class="fas fa-search"></i>
-                                        <input type="text" id="productSearch" class="search-input"
-                                            placeholder="Search for products..." />
+                                        <input 
+                                            type="text" 
+                                            id="productSearch" 
+                                            class="search-input"
+                                            placeholder="Search for products..."
+                                        />
                                     </div>
                                     <button class="btn btn-primary" onclick="searchProducts()">
                                         <i class="fas fa-search"></i>
@@ -1476,7 +1461,11 @@
                                 <div class="form-grid">
                                     <div class="form-group">
                                         <label>Stock Code</label>
-                                        <input type="text" id="recStockCode" placeholder="e.g., 85123A" />
+                                        <input 
+                                            type="text" 
+                                            id="recStockCode" 
+                                            placeholder="e.g., 85123A"
+                                        />
                                     </div>
                                     <div class="form-group">
                                         <label>Number of Recommendations</label>
@@ -1554,8 +1543,11 @@
                                     <div class="form-grid">
                                         <div class="form-group">
                                             <label>Customer ID</label>
-                                            <input type="text" id="customerId"
-                                                placeholder="Enter customer ID (e.g., 12346)" />
+                                            <input 
+                                                type="text" 
+                                                id="customerId" 
+                                                placeholder="Enter customer ID (e.g., 12346)"
+                                            />
                                         </div>
                                     </div>
                                     <button class="btn btn-primary" onclick="getCustomerProfile()">
@@ -1612,12 +1604,24 @@
                                 <div class="form-grid">
                                     <div class="form-group">
                                         <label>Minimum Confidence</label>
-                                        <input type="number" id="minConfidence" value="0.5" step="0.1" min="0"
-                                            max="1" />
+                                        <input 
+                                            type="number" 
+                                            id="minConfidence" 
+                                            value="0.5" 
+                                            step="0.1" 
+                                            min="0" 
+                                            max="1"
+                                        />
                                     </div>
                                     <div class="form-group">
                                         <label>Minimum Lift</label>
-                                        <input type="number" id="minLift" value="1.0" step="0.1" min="0" />
+                                        <input 
+                                            type="number" 
+                                            id="minLift" 
+                                            value="1.0" 
+                                            step="0.1" 
+                                            min="0"
+                                        />
                                     </div>
                                 </div>
                                 <button class="btn btn-primary" onclick="getAssociationRules()">
@@ -1677,8 +1681,11 @@
                                 <div class="form-grid">
                                     <div class="form-group">
                                         <label>Countries (comma-separated)</label>
-                                        <input type="text" id="diceCountries"
-                                            placeholder="United Kingdom, Germany, France" />
+                                        <input 
+                                            type="text" 
+                                            id="diceCountries" 
+                                            placeholder="United Kingdom, Germany, France"
+                                        />
                                     </div>
                                     <div class="form-group">
                                         <label>Start Date</label>
@@ -1745,11 +1752,11 @@
             }
 
             API_URL = url.replace(/\/$/, '');
-
+            
             const btn = document.querySelector('.connect-btn');
             btn.classList.add('loading');
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Connecting...</span>';
-
+            
             showConnectionStatus('Testing connection...', 'loading');
 
             try {
@@ -1760,7 +1767,7 @@
                 if (response.ok) {
                     const data = await response.json();
                     isConnected = true;
-
+                    
                     showConnectionStatus('Connection successful! Redirecting...', 'success');
                     localStorage.setItem('apiUrl', API_URL);
 
@@ -1805,7 +1812,7 @@
                 localStorage.removeItem('apiUrl');
                 document.getElementById('mainDashboard').classList.remove('visible');
                 document.getElementById('connectionScreen').classList.remove('hidden');
-
+                
                 const btn = document.querySelector('.connect-btn');
                 btn.classList.remove('loading');
                 btn.innerHTML = '<i class="fas fa-plug"></i><span>Connect to API</span>';
@@ -1863,6 +1870,7 @@
         async function loadCustomerOverview() {
             if (!isConnected) return;
 
+            console.log('Loading customer overview from:', `${API_URL}/api/analytics/customers/overview`);
             showLoading('overviewLoading', true);
 
             try {
@@ -1870,12 +1878,30 @@
                     headers: { 'ngrok-skip-browser-warning': 'true' }
                 });
 
-                if (!response.ok) throw new Error('Failed to load customer overview');
+                console.log('Overview response status:', response.status);
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Overview error response:', errorText);
+                    throw new Error(`Failed to load customer overview: ${response.status}`);
+                }
 
                 const data = await response.json();
+                console.log('Overview data received:', data);
                 displayCustomerOverview(data);
             } catch (error) {
+                console.error('Error in loadCustomerOverview:', error);
                 showAlert('Error loading customer overview: ' + error.message, 'error');
+                document.getElementById('overviewResults').innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Error Loading Data</h3>
+                        <p>${error.message}</p>
+                        <p style="margin-top: 15px; font-size: 13px; color: #9ca3af;">
+                            Check the console for more details
+                        </p>
+                    </div>
+                `;
             } finally {
                 showLoading('overviewLoading', false);
             }
@@ -1883,7 +1909,11 @@
 
         // Display Customer Overview
         function displayCustomerOverview(data) {
+            console.log('Displaying overview with data:', data);
             const resultsDiv = document.getElementById('overviewResults');
+
+            // Handle missing CLV data gracefully
+            const topCustomers = data.top_customers || [];
 
             resultsDiv.innerHTML = `
                 <h3 style="margin: 0 0 25px; font-size: 22px; color: var(--dark);">
@@ -1942,33 +1972,35 @@
                     `).join('')}
                 </div>
 
-                <h3 style="margin: 40px 0 20px; font-size: 20px; color: var(--dark);">
-                    Top Customers by CLV
-                </h3>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Customer ID</th>
-                                <th>CLV</th>
-                                <th>Total Spending</th>
-                                <th>Frequency</th>
-                                <th>Segment</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${(data.top_customers || []).map(customer => `
+                ${topCustomers.length > 0 ? `
+                    <h3 style="margin: 40px 0 20px; font-size: 20px; color: var(--dark);">
+                        Top Customers by Value
+                    </h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
                                 <tr>
-                                    <td>${customer.CustomerID}</td>
-                                    <td>£${(customer.CLV || 0).toFixed(2)}</td>
-                                    <td>£${(customer.Monetary || 0).toFixed(2)}</td>
-                                    <td>${customer.Frequency || 0}</td>
-                                    <td><span class="badge badge-confidence">${customer.Cluster_Label || 'N/A'}</span></td>
+                                    <th>Customer ID</th>
+                                    <th>Total Spending</th>
+                                    <th>Frequency</th>
+                                    <th>Segment</th>
+                                    ${topCustomers[0].CLV !== undefined ? '<th>CLV</th>' : ''}
                                 </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+                                ${topCustomers.map(customer => `
+                                    <tr>
+                                        <td>${customer.CustomerID}</td>
+                                        <td>£${(customer.Monetary || 0).toFixed(2)}</td>
+                                        <td>${customer.Frequency || 0}</td>
+                                        <td><span class="badge badge-confidence">${customer.Cluster_Label || 'N/A'}</span></td>
+                                        ${customer.CLV !== undefined ? `<td>£${(customer.CLV || 0).toFixed(2)}</td>` : ''}
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                ` : ''}
             `;
         }
 
@@ -1976,6 +2008,7 @@
         async function loadCustomerSegments() {
             if (!isConnected) return;
 
+            console.log('Loading customer segments from:', `${API_URL}/api/analytics/customers/segments`);
             showLoading('segmentsLoading', true);
 
             try {
@@ -1983,12 +2016,27 @@
                     headers: { 'ngrok-skip-browser-warning': 'true' }
                 });
 
-                if (!response.ok) throw new Error('Failed to load customer segments');
+                console.log('Segments response status:', response.status);
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Segments error response:', errorText);
+                    throw new Error(`Failed to load customer segments: ${response.status}`);
+                }
 
                 const data = await response.json();
+                console.log('Segments data received:', data);
                 displayCustomerSegments(data);
             } catch (error) {
+                console.error('Error in loadCustomerSegments:', error);
                 showAlert('Error loading customer segments: ' + error.message, 'error');
+                document.getElementById('segmentsResults').innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Error Loading Data</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
             } finally {
                 showLoading('segmentsLoading', false);
             }
@@ -1996,6 +2044,7 @@
 
         // Display Customer Segments
         function displayCustomerSegments(data) {
+            console.log('Displaying segments with data:', data);
             const resultsDiv = document.getElementById('segmentsResults');
 
             resultsDiv.innerHTML = `
@@ -2029,10 +2078,12 @@
                                 <div class="label">Avg Monetary</div>
                                 <div class="value">£${segment.avg_monetary?.toFixed(2)}</div>
                             </div>
-                            <div class="segment-stat">
-                                <div class="label">Avg CLV</div>
-                                <div class="value">£${segment.avg_clv?.toFixed(2)}</div>
-                            </div>
+                            ${segment.avg_clv !== undefined && segment.avg_clv > 0 ? `
+                                <div class="segment-stat">
+                                    <div class="label">Avg CLV</div>
+                                    <div class="value">£${segment.avg_clv?.toFixed(2)}</div>
+                                </div>
+                            ` : ''}
                         </div>
 
                         <h4 style="margin: 20px 0 15px; font-size: 16px; color: var(--dark);">
@@ -2077,13 +2128,19 @@
                 return;
             }
 
+            console.log('Fetching customer profile for:', customerId);
             showLoading('analyticsLoading', true);
 
             try {
                 // Fetch customer profile
-                const profileResponse = await fetch(`${API_URL}/api/customers/${customerId}`, {
+                const profileUrl = `${API_URL}/api/customers/${customerId}`;
+                console.log('Fetching from:', profileUrl);
+                
+                const profileResponse = await fetch(profileUrl, {
                     headers: { 'ngrok-skip-browser-warning': 'true' }
                 });
+
+                console.log('Profile response status:', profileResponse.status);
 
                 if (profileResponse.status === 404) {
                     showAlert(`Customer ID ${customerId} not found`, 'error');
@@ -2092,27 +2149,39 @@
                         <div class="empty-state">
                             <i class="fas fa-user-slash"></i>
                             <h3>Customer Not Found</h3>
-                            <p>No customer found with ID: ${customerId}</p>
+                            <p>No customer found with ID: <strong>${customerId}</strong></p>
                             <p style="margin-top: 15px; font-size: 13px; color: #9ca3af;">
-                                Try searching for a different customer ID
+                                Make sure you're using a valid CustomerID from your dataset
                             </p>
                         </div>
                     `;
                     return;
                 }
 
-                if (!profileResponse.ok) throw new Error('Failed to load customer profile');
+                if (!profileResponse.ok) {
+                    const errorText = await profileResponse.text();
+                    console.error('Profile error response:', errorText);
+                    throw new Error(`Failed to load customer profile: ${profileResponse.status}`);
+                }
 
                 const profile = await profileResponse.json();
+                console.log('Profile data received:', profile);
 
                 // Fetch customer history
                 let history = [];
                 try {
-                    const historyResponse = await fetch(`${API_URL}/api/customers/${customerId}/history`, {
+                    const historyUrl = `${API_URL}/api/customers/${customerId}/history`;
+                    console.log('Fetching history from:', historyUrl);
+                    
+                    const historyResponse = await fetch(historyUrl, {
                         headers: { 'ngrok-skip-browser-warning': 'true' }
                     });
+                    
+                    console.log('History response status:', historyResponse.status);
+                    
                     if (historyResponse.ok) {
                         const historyData = await historyResponse.json();
+                        console.log('History data received:', historyData);
                         history = historyData.history || [];
                     }
                 } catch (e) {
@@ -2121,8 +2190,18 @@
 
                 displayCustomerProfile(profile, history);
             } catch (error) {
+                console.error('Error in getCustomerProfile:', error);
                 showAlert('Error loading customer: ' + error.message, 'error');
-                console.error('Customer profile error:', error);
+                document.getElementById('customerProfileResults').innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Error Loading Customer</h3>
+                        <p>${error.message}</p>
+                        <p style="margin-top: 15px; font-size: 13px; color: #9ca3af;">
+                            Check the console for more details
+                        </p>
+                    </div>
+                `;
             } finally {
                 showLoading('analyticsLoading', false);
             }
@@ -2130,83 +2209,50 @@
 
         // Display Customer Profile
         function displayCustomerProfile(profile, history = []) {
+            console.log('Displaying customer profile:', profile, 'History count:', history.length);
             const resultsDiv = document.getElementById('customerProfileResults');
+
+            // Safely access profile fields with fallbacks
+            const safeGet = (obj, key, fallback = 0) => {
+                return obj && obj[key] !== undefined && obj[key] !== null ? obj[key] : fallback;
+            };
 
             resultsDiv.innerHTML = `
                 <div class="customer-profile">
-                    <h3>Customer ${profile.CustomerID || 'N/A'}</h3>
-                    <div class="customer-segment">${profile.Cluster_Label || 'N/A'}</div>
+                    <h3>Customer ${safeGet(profile, 'CustomerID', 'N/A')}</h3>
+                    <div class="customer-segment">${safeGet(profile, 'Cluster_Label', 'N/A')}</div>
                     <div class="profile-stats">
                         <div class="profile-stat">
                             <div class="label">Total Spending</div>
-                            <div class="value">£${(profile.Monetary || 0).toFixed(2)}</div>
+                            <div class="value">£${safeGet(profile, 'Monetary', 0).toFixed(2)}</div>
                         </div>
                         <div class="profile-stat">
                             <div class="label">Total Orders</div>
-                            <div class="value">${profile.Frequency || 0}</div>
+                            <div class="value">${safeGet(profile, 'Frequency', 0)}</div>
                         </div>
                         <div class="profile-stat">
                             <div class="label">Total Items</div>
-                            <div class="value">${profile.TotalItems || 0}</div>
+                            <div class="value">${safeGet(profile, 'TotalItems', 0)}</div>
                         </div>
                         <div class="profile-stat">
                             <div class="label">Avg Order</div>
-                            <div class="value">£${(profile.AvgOrderValue || 0).toFixed(2)}</div>
+                            <div class="value">£${safeGet(profile, 'AvgOrderValue', 0).toFixed(2)}</div>
                         </div>
                         <div class="profile-stat">
                             <div class="label">Recency</div>
-                            <div class="value">${profile.Recency || 0} days</div>
+                            <div class="value">${safeGet(profile, 'Recency', 0)} days</div>
                         </div>
-                        <div class="profile-stat">
-                            <div class="label">CLV Score</div>
-                            <div class="value">${(profile.CLV_Score || 0).toFixed(1)}</div>
-                        </div>
+                        ${profile.CLV_Score !== undefined ? `
+                            <div class="profile-stat">
+                                <div class="label">CLV Score</div>
+                                <div class="value">${safeGet(profile, 'CLV_Score', 0).toFixed(1)}</div>
+                            </div>
+                        ` : ''}
                     </div>
                 </div>
 
-                <h3 style="margin: 30px 0 20px; font-size: 20px; color: var(--dark);">
-                    <i class="fas fa-shopping-bag" style="color: var(--gradient-3);"></i>
-                    Purchase History
-                </h3>
-                ${history.length === 0 ? `
-                    <div class="empty-state">
-                        <i class="fas fa-shopping-bag"></i>
-                        <h3>No Purchase History</h3>
-                        <p>No purchase records found for this customer</p>
-                    </div>
-                ` : `
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Invoice</th>
-                                    <th>Date</th>
-                                    <th>Product</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${history.slice(0, 20).map(item => `
-                                    <tr>
-                                        <td>${item.InvoiceNo || 'N/A'}</td>
-                                        <td>${item.InvoiceDate ? new Date(item.InvoiceDate).toLocaleDateString() : 'N/A'}</td>
-                                        <td>${item.Description || 'N/A'}</td>
-                                        <td>${item.Quantity || 0}</td>
-                                        <td>£${(item.UnitPrice || 0).toFixed(2)}</td>
-                                        <td>£${(item.TotalPrice || 0).toFixed(2)}</td>
-                                    </tr>
-                                `).join('')}
-                            </tbody>
-                        </table>
-                    </div>
-                    ${history.length > 20 ? `
-                        <p style="text-align: center; margin-top: 15px; color: #6b7280; font-size: 14px;">
-                            Showing 20 of ${history.length} transactions
-                        </p>
-                    ` : ''}
-                `}
+                
+                
             `;
         }
 
@@ -2214,6 +2260,7 @@
         async function loadRFMAnalysis() {
             if (!isConnected) return;
 
+            console.log('Loading RFM analysis from:', `${API_URL}/api/analytics/customers/rfm`);
             showLoading('rfmLoading', true);
 
             try {
@@ -2221,12 +2268,27 @@
                     headers: { 'ngrok-skip-browser-warning': 'true' }
                 });
 
-                if (!response.ok) throw new Error('Failed to load RFM analysis');
+                console.log('RFM response status:', response.status);
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('RFM error response:', errorText);
+                    throw new Error(`Failed to load RFM analysis: ${response.status}`);
+                }
 
                 const data = await response.json();
+                console.log('RFM data received:', data);
                 displayRFMAnalysis(data);
             } catch (error) {
+                console.error('Error in loadRFMAnalysis:', error);
                 showAlert('Error loading RFM analysis: ' + error.message, 'error');
+                document.getElementById('rfmResults').innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Error Loading Data</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
             } finally {
                 showLoading('rfmLoading', false);
             }
@@ -2234,6 +2296,7 @@
 
         // Display RFM Analysis
         function displayRFMAnalysis(data) {
+            console.log('Displaying RFM with data:', data);
             const resultsDiv = document.getElementById('rfmResults');
 
             resultsDiv.innerHTML = `
@@ -2370,7 +2433,7 @@
         // Display Products
         function displayProducts(products) {
             const grid = document.getElementById('productsGrid');
-
+            
             if (products.length === 0) {
                 grid.innerHTML = `
                     <div class="empty-state">
@@ -2580,7 +2643,7 @@
                     <div class="stat-header">
                         <div>
                             <h3>Total Revenue</h3>
-                            <div class="stat-value">£${(stats.total_revenue || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+                            <div class="stat-value">£${(stats.total_revenue || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
                             <div class="stat-change"><i class="fas fa-arrow-up"></i> +15.2%</div>
                         </div>
                         <div class="stat-icon">
@@ -2788,7 +2851,7 @@
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-pound-sign"></i></div>
                         <h3>Revenue</h3>
-                        <div class="stat-value">£${(data.total_revenue || 0).toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                        <div class="stat-value">£${(data.total_revenue || 0).toLocaleString(undefined, {minimumFractionDigits: 2})}</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-users"></i></div>
@@ -2840,8 +2903,8 @@
         // Format Value
         function formatValue(value) {
             if (typeof value === 'number') {
-                return value > 1000
-                    ? value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                return value > 1000 
+                    ? value.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})
                     : value.toFixed(2);
             }
             return value;
@@ -2859,7 +2922,7 @@
         function showAlert(message, type) {
             const alertDiv = document.createElement('div');
             alertDiv.className = `alert alert-${type} show`;
-
+            
             const icons = {
                 success: 'fa-check-circle',
                 error: 'fa-exclamation-circle',
@@ -2870,7 +2933,7 @@
                 <i class="fas ${icons[type]}"></i>
                 <div class="alert-message">${message}</div>
             `;
-
+            
             document.body.appendChild(alertDiv);
 
             setTimeout(() => {
@@ -2887,5 +2950,4 @@
         });
     </script>
 </body>
-
 </html>
